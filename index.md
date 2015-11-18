@@ -21,9 +21,13 @@ A tentative outline of the course is available below.
     - Online advertising
     - Google Consumer Surveys
     - Professional panels
+    - Email lists
  5. Building web questionnaires (Hands-on)
+    - Quick intro to web browser technologies
+      - HTML Forms
+      - Layout and CSS
+      - Javascript randomization
     - Google Spreadsheet Forms
-      - Quick intro to HTML and Javascript
     - Survey Monkey
     - Qualtrics
  6. Transparency and Reproducibility in Survey Research
