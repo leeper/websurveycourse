@@ -5,7 +5,7 @@ title: Home
 
 # Materials for Survey Experiments short course #
 
-This repository holds materials for a workshop about Online Surveys and Survey Experiments to be taught as part of the [Quantitative Methods Working Group](https://sites.google.com/site/qmwgroup/) at the [European University Institute](http://www.eui.eu/) in Florence, Italy. The front-facing version of the site can be found at [http://www.thomasleeper.com/websurveycourse](http://www.thomasleeper.com/websurveycourse).
+This repository holds materials for a workshop about Online Surveys and Survey Experiments to be taught as part of the [Quantitative Methods Working Group](https://sites.google.com/site/qmwgroup/) at the [European University Institute](http://www.eui.eu/) in Florence, Italy.
 
 The workshop will last approximately 5 hours and involve a mix of hands-on development of web surveys on three platforms (Google Forms, Survey Monkey, and Qualtrics), a discussion of online recruitment methods - including crowdsourcing platforms (Amazon Mechanical Turk, Crowdflower), online advertising, Google Consumer Surveys, and professional online panels (YouGov, SSI, and GfK) - and a discussion of various issues in online survey experimentations related to mode effects, randomization, response rates and biases, and sample representativeness.
 
