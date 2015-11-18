@@ -1,0 +1,14 @@
+# subdirectories to ignore #
+
+# filetypes to ignore #
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.synctex.gz
+*.bbl
+*.blg
+*.Rhistory
+*.vrb
