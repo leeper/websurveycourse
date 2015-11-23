@@ -23,13 +23,18 @@ A tentative outline of the course is available below.
     - Professional panels
     - Email lists
  5. Building web questionnaires (Hands-on)
+    - "Server-side" versus "client-side" distinction
     - Quick intro to web browser technologies
       - HTML Forms
       - Layout and CSS
       - Javascript randomization
-    - Google Spreadsheet Forms
-    - Survey Monkey
-    - Qualtrics
+    - Cloud questionnaires services
+      - Google Spreadsheet Forms
+      - Survey Monkey
+      - Qualtrics
+    - Customizable web server
+      - Otree/Heroku
+      - Bespoke solutions
  6. Transparency and Reproducibility in Survey Research
  7. Challenges and Opportunities
     - Representativeness
@@ -39,6 +44,9 @@ A tentative outline of the course is available below.
     - Mode effects
     - Attention checks
     - Pushing the state-of-the-art
+      - Apps
+      - Panels
+      - Conjoint
 
 The course will use several online applications, all of which require registration. While participants do not need to register for all of these services, it may be helpful to register for at least some of them so that the hands-on activities are more engaging.
 
@@ -54,3 +62,9 @@ The course will use several online applications, all of which require registrati
  - [SurveyMonkey](https://www.surveymonkey.com/) (free account; limited surveys and respondents; no randomization in free account)
  - [Qualtrics](http://www.qualtrics.com/free-account/) (free account; limited surveys and respondents)
  
+** Server-side technologies **
+
+ - [Otree](www.otree.org) (free download)
+   - [Download and installation instructions](http://otree.readthedocs.org/en/latest/setup.html#prerequisite-python-2-7-not-3-x)
+   - Requires [Python 2.7](https://www.python.org/download/releases/2.7/) and [pip](https://en.wikipedia.org/wiki/Pip_(package_manager))
+ - [Heroku](https://www.heroku.com) (free account; limited traffic)
