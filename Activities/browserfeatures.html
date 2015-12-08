@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Survey</title>
+</head>
+<body>
+<form method='post' id='submitform' action='http://httpbin.org/post'>
+    <input type='hidden' value='' name='browser' id='browser' />
+    <input type='hidden' value='' name='engine' id='engine' />
+    <input type='hidden' value='' name='platform' id='platform' />
+    <input type='hidden' value='' name='language' id='language' />
+    <input type='hidden' value='' name='width' id='width' />
+    <input type='hidden' value='' name='height' id='height' />
+    <input type='hidden' value='' name='resolution' id='resolution' />
+    <script>
+        document.getElementById('browser').value = navigator.userAgent;
+        document.getElementById('engine').value = navigator.product;
+        document.getElementById('platform').value = navigator.platform;
+        document.getElementById('language').value = navigator.language;
+        document.getElementById('width').value = screen.width;
+        document.getElementById('height').value = screen.height;
+        document.getElementById('resolution').value = screen.colorDepth;
+    </script>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
