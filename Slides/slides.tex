@@ -3,9 +3,9 @@
 \usetikzlibrary{shapes,arrows}
 \usepackage[normalem]{ulem}
 
-\title{Online Behavioral Research Workshop}
+\title{Running Online Surveys with Nonprobability Samples}
 
-\date[]{10 December 2015}
+\date[]{10 December 2015\\EUI Quantitative Methods Working Group}
 
 \begin{document}
 
@@ -28,9 +28,9 @@ By the end of today you should be able to:
 \begin{itemize}\itemsep1em
 \item Describe logic of design-based and model-based representativeness
 \item Evaluate the quality of a convenience sample
+\item Evaluate trade-offs between client-side and server-side technologies for behavioral research
 \item Design simple web forms using several tools
-\item Evaluate trade-offs between client-side and server-side web technologies
-\item Describe possible
+\item Apply all of this to your own research
 \end{itemize}
 }
 
@@ -50,9 +50,9 @@ By the end of today you should be able to:
 \frametitle{About Me}
 
 \begin{itemize}\itemsep1em
-\item Assistant Professor at London School of Economics
-\item PhD in Political Science from Northwestern University (2015)
+\item Assistant Professor at London School of Economics since September
 \item Postdoc at Aarhus University 2012--2015
+\item PhD in Political Science from Northwestern University (2015)
 \item Interested in:
 	\begin{itemize}
 	\item Political psychology
@@ -70,7 +70,7 @@ By the end of today you should be able to:
 \item<2-> taken a course on survey methods?
 \item<3-> taken a course on experimental design?
 \item<4-> written HTML markup before?
-\item<5-> run a study on MTurk, Crowdflower, or another online platform?
+\item<5-> run a study on MTurk or Crowdflower, with YouGov, or another online platform?
 \end{itemize}
 }
 
@@ -235,22 +235,6 @@ a population-based experiment uses survey sampling methods to produce a collecti
 
 
 \frame{
-	\frametitle{Simple Random Sampling (SRS)}
-	\begin{itemize}\itemsep2em
-		\item Advantages
-			\begin{itemize}
-				\item Simplicity of sampling
-				\item Simplicity of analysis
-			\end{itemize}
-		\item Disadvantages
-			\begin{itemize}
-				\item Need sampling frame and units without any structure
-				\item Possibly expensive
-			\end{itemize}
-	\end{itemize}
-}
-
-\frame{
 	\frametitle{Sample Estimates from an SRS}
 	\begin{itemize}\itemsep1em
 		\item Each unit in frame has equal probability of selection
@@ -278,31 +262,259 @@ a population-based experiment uses survey sampling methods to produce a collecti
 
 
 
+\frame{
+
+Combining SRS and experimental design
+
+
+Says nothing about heterogeneity -> ATE is not necessarily an effect for any given unit in the population -> it is an average of individual-level effects
+
+Imagine two CATES (conditional average treatment effects)
+
+}
+
+
 
 
 
 \frame{
-	\frametitle{Representativeness}
-	
-	What does it mean for a sample to be representative?
-	
-	\begin{itemize}\itemsep1em
-		\item<2-> Census
-		\item<3-> Simple random sampling
-		\item<4-> Complex survey designs
-		\item<5-> Quota sampling (common prior to the 1940s)
-		\item<6-> Reweighting
-		\item<7-> Others?
+
+\frametitle{Some considerations\dots}
+
+\begin{itemize}\itemsep0.5em
+\item<2-> More complex designs possible, all based on each unit having a \textit{known, non-zero} probability of being sampled
+\item<3-> Random sampling ensures that samples are, \textit{in expectation}, representative of the population \textit{in all respects}
+	\begin{itemize}
+	\item Demographics
+	\item Psychological traits
+	\item Covariances
+	\item Potential outcomes
 	\end{itemize}
+\item<4-> Only works in a world of perfect coverage and zero response bias
+	\begin{itemize}
+	\item Says nothing about response rate!
+	\end{itemize}
+\end{itemize}
+
+}
+
+
+
+
+\frame{
+\frametitle{Representativeness}
+
+What does it mean for a sample to be representative?
+
+\begin{itemize}
+	\item<2-> Census
+	\item<3-> SRS (or more complex) design
+	\item<4-> Quota sampling (common prior to the 1940s)
+	\item<5-> Demographics match population
+	\item<6-> Others?
+\end{itemize}
+
+\vspace{1em}
+
+\onslide<7->{Which of these matter? Discuss with the person next to you.}
+
 }
 
 
 % what kinds of representativeness do we care about?
 
+\frame{
+\frametitle{My View}
 
-% defining a target population
-% question is: what do you want your survey
+100\% design-based inference does not exist
 
+\vspace{1em}
+
+\begin{itemize}\itemsep1em
+\item<2-> All survey designs involve reweighting adjustments
+\item<3-> Representativeness is a more complex issue than demographic comparisons
+\end{itemize}
+}
+
+
+
+
+\frame{
+\frametitle{My Own Research}
+\footnotesize
+\begin{tabular}{ l r r r r r r r} \toprule\toprule
+   & {\bf GfK} & {\bf Poll} & {\bf Student} & {\bf Staff}  & {\bf MTurk} & {\bf Ads} & {\bf ANES}\\ \midrule
+{\bf Dem. (\%)}      & 51.3 & 86.1 & 75.7 & 66.4 & 62.1 & 72.1 & 46.2 \\  
+{\bf Rep. (\%)}    & 46.0 &   7.7 & 17.8 & 16.4 & 20.3 &  14.7 & 39.3\\ 
+{\bf Lib. (\%)}          & 27.8 & 75.4 & 68.5 & 62.7 & 60.4 & 66.2& 23.8\\
+{\bf Con. (\%)} & 35.3 & 9.4 & 14.7 & 19.8 & 19.1 & 17.7& 36.1\\
+{\bf Fem. (\%)}         & 51.1 & 60.8 & 56.4 & 50.8 & 41.7 & 65.3 & 51.9 \\
+{\bf White (\%)}           & 77.9 & 67.6 & 62.9 & 60.2 & 76.0 & 53.8 & 80.4\\
+{\bf Age}          & 49.4 & 40-49 & 18-24 & 25-34 & 25-34 & 25-34& 50-54 \\ 
+{\bf Interest}       & 2.8 & 3.5 & 3.2 & 2.8 & 2.7 & 3.0 & 3.0\\ \midrule
+{\bf N}                         & 593 & 741 & 299 & 128 & 1024 & 80&  -- \\ \bottomrule\bottomrule
+\end{tabular}
+
+\vspace{1em}
+
+{\footnotesize Mullinix et al. In press. ``The Generalizability of Survey Experiments.'' \textit{Journal of Experimental Political Science}.}
+}
+
+\frame{
+\begin{center}
+\includegraphics[height=.95\textheight]{images/mullinix3}
+\end{center}
+}
+
+
+\frame{
+\begin{center}
+\includegraphics[width=1.1\textheight]{images/mullinix1}
+\end{center}
+}
+
+
+
+\frame{
+\frametitle{SUTO Framework}
+\begin{itemize}\itemsep1em
+\item Cronbach (1986) talks about generalizability in terms of UTO
+\item Shadish, Cook, and Campbell (2001) speak similarly of:
+	\begin{itemize}
+	\item \textbf{S}ettings
+	\item \textbf{U}nits
+	\item \textbf{T}reatments
+	\item \textbf{O}utcomes
+	\end{itemize}
+\item External validity depends on all of these things
+\end{itemize}
+}
+
+
+\frame{
+\begin{columns}[t]
+\begin{column}{0.5\textwidth}
+	\begin{block}{Population}
+		\begin{itemize}
+		\item Setting
+		\item Units
+		\item Treatments
+		\item Outcomes
+		\end{itemize}
+	\end{block}
+\end{column}
+\begin{column}{0.5\textwidth}
+	\begin{block}{Your Study}
+		\begin{itemize}
+		\item Setting
+		\item Units
+		\item Treatments
+		\item Outcomes
+		\end{itemize}
+	\end{block}
+\end{column}
+\end{columns}
+
+\vspace{1em}
+
+\only<2->{In your study, how do these correspond?\\}
+\only<3->{\hspace{5.7em} how do these differ?\\}
+\only<4->{\hspace{5.7em} do these differences matter?\\}
+
+}
+
+
+\frame{
+\frametitle{Common Differences}
+\begin{itemize}\itemsep1em
+\item Most common thing to focus on is demographic representativeness
+	\begin{itemize}
+	\item Sears (1986): ``students aren't real people''
+	\item \href{http://www.slate.com/articles/health_and_science/science/2013/05/weird_psychology_social_science_researchers_rely_too_much_on_western_college.html}{Western, educated, industrialized, rich, democratic (WEIRD) psychology participants}
+	\end{itemize}
+\item<2-> But do those characteristics actually matter?
+\item<3-> Shadish, Cook, and Campbell tell us to think about:
+	\begin{itemize}
+	\item Surface similarities
+	\item Ruling out irrelevancies
+	\item Making discriminations
+	\item Interpolation/extrapolation
+	\end{itemize}
+\end{itemize}
+}
+
+
+\frame{
+\frametitle{Focus on effect heterogeneity}
+\begin{itemize}\itemsep1em
+\item Think about and make an evidence-based argument for why you think there are (or are not) heterogeneous effects
+\item<2-> If you think there is heterogeneity, then we probably do not care about the SATE anyway
+	\begin{itemize}
+	\item Focus on CATE instead
+	\item $E[Y_{1i} | X = 1, Z=z] - E[Y_{0i} | X = 0, Z=z]$
+	\end{itemize}
+\item<3-> Two basic analytic strategies
+	\begin{itemize}
+	\item Regression with large number of interactions
+	\item Bayesian Additive Regression Trees
+	\end{itemize}
+\item<4-> But remember: you have to convince reviewers!
+\end{itemize}
+}
+
+
+
+\frame{
+\frametitle{BART}
+\begin{itemize}\itemsep1em
+\item Estimate \textit{conditional average treatment effects}
+\item BART is essentially an ensemble machine learning method
+\item Iteratively split a sample into more and more homogeneous groups until some threshold is reached using binary (cutpoint) decisions
+\item Repeat this a bunch of times, aggregating across results
+\end{itemize}
+}
+
+\frame{
+\begin{center}
+\includegraphics[width=\textwidth]{images/greenkern1}
+\end{center}
+{\footnotesize Green and Kern. 2012. ``Modeling Heterogeneous Treatment Effects in Survey Experiments with Bayesian Additive Regression Trees.'' \textit{Public Opinion Quarterly}.\par}
+}
+
+\frame{
+\begin{center}
+\includegraphics[height=.8\textheight]{images/greenkern2}
+\end{center}
+{\footnotesize Green and Kern. 2012. ``Modeling Heterogeneous Treatment Effects in Survey Experiments with Bayesian Additive Regression Trees.'' \textit{Public Opinion Quarterly}.\par}
+}
+
+
+
+
+
+
+% induced value theory (swamping preferences)
+\frame{
+\frametitle{{\large Aside: Induced Value Theory}}
+\begin{itemize}\itemsep1em
+\item Incentivized (economic) experiments rely on induced value theory
+\item This is a way to reduce heterogeneity
+	\begin{itemize}
+	\item Incentives reduce variation across individuals
+	\item Sample characteristics should matter less (than in other types of research)
+	\end{itemize}
+\item Actually merits empirical testing, though
+\end{itemize}
+}
+
+
+\frame{
+Does this mean all convenience samples are created equal?
+
+\vspace{1em}
+
+No.
+}
 
 
 % defining your convenience sample
@@ -326,36 +538,55 @@ a population-based experiment uses survey sampling methods to produce a collecti
 	\end{itemize}
 }
 
-% eligibility; duplication; recontacts
-
-
-
-% response rates and biases
 \frame{
-\frametitle{Response Rates and Biases}
-\begin{itemize}
-\item The ``response rate'' is a traditional metric of survey quality
-\item But, it's difficult to define in online/opt-in context
-\item<2-> Bigger issue is ``reponse bias''
+\frametitle{Costs per participant}
+\centering
+\begin{tabular}{l r r r}
+Sample	& Cost	& n	& Cost/participant\\ \midrule
+National	& \$13200	& 593	& \$22.26\\
+Exit Poll	& \$3000	& 741	& \$4.05\\
+Students	& \$0	& 299	& \$0\\
+Staff		& \$1280	& 128	& \$10.00\\
+MTurk	& \$550	& 1024	& \$0.54\\
+Ads		& \$636	& 80		& \$7.95\\
+\bottomrule
+\end{tabular}
+}
+
+
+% eligibility; duplication; recontacts
+\frame{
+\frametitle{My Advice}
+\begin{itemize}\itemsep1em
+\item Only work with enumerated populations
+	\begin{itemize}
+	\item Each unit is uniquely identifiable
+	\end{itemize}
+\item<2-> Without this, you risk many things:
+	\begin{itemize}
+	\item Ambiguous eligibility
+	\item Retakes, treatment crossover
+	\item No way to evaluate response rates/bias
+	\end{itemize}
+\item<3-> Know something about your sample
+	\begin{itemize}
+	\item How does it differ from your target of inference?
+	\item What theories or evidence would suggest those differences should matter?
+	\item What can you do to adjust or control for those \textit{consequential} differences?
+	\end{itemize}
 \end{itemize}
 }
 
 
 
+\frame{
+\frametitle{Don't forget statistical power\dots}
+\begin{center}
+\includegraphics[height=0.85\textheight, trim = 0in 0in 0in 0.5in , clip]{images/power}
+\end{center}
+}
 
-% question is how do they differ?
 
-
-% suto
-
-
-% sample characteristics
-
-% attentiveness measures; satisficing; timing; response rates
-
-% heterogeneous treatment effects
-
-% induced value theory (swamping preferences)
 
 
 \section{Web Questionnaires}
@@ -424,10 +655,10 @@ A web page consists of four things:
   <title>Survey</title>
 </head>
 <body>
-  <form action="http://httpbin.org/post">
+  <form action="http://httpbin.org/post" method="POST">
     <p>
       <label for="q1">Name: 
-        <input type="text" name="q1" />
+        <input type="text" id="q1" name="q1" />
       </label>
     </p>
     <p><input type="submit"></p>
@@ -446,7 +677,221 @@ A web page consists of four things:
 %% <select name="cars"><option value="volvo">Volvo</option></select>
 %% <input type="hidden" />
 
+
+\frame{
+\frametitle{Getting a grip on HTML}
+\begin{itemize}\itemsep1em
+\item Every element should have an opening \texttt{<tag>} and closing \texttt{</tag>}
+\item Necessary tags:
+	\begin{itemize}
+	\item \texttt{<html></html>}
+	\item \texttt{<head></head>}
+	\item \texttt{<body></body>}
+	\end{itemize}
+\item<2-> Use an intelligent text editor (\textit{not Notepad})
+\item<3-> Use a validator: \url{https://validator.w3.org/nu/}
+\item<4-> Remember that browsers differ
+\end{itemize}
+}
+
+
+\bgroup
+\setbeamercolor{background canvas}{bg=blue!70!white}
+\setbeamertemplate{navigation symbols}{}
+\begin{frame}[plain]{}
+\begin{center}
+\textbf{{\Large Test Yourself!}}
+
+\vspace{2em}
+
+Make a simple complete HTML document that passes displays a paragraph of text and passes the validator
+
+\vspace{2em}
+
+\url{https://validator.w3.org/nu/}
+\end{center}
+\end{frame}
+\egroup
+
+
+
+
+
+\frame{
+\frametitle{Getting a grip on HTML}
+\begin{itemize}\itemsep1em
+\item Common elements
+	\begin{itemize}
+	\item \texttt{<div></div>}
+	\item \texttt{<span></span>}
+	\item \texttt{<p></p>}
+	\item \texttt{<h1>}, \texttt{<h2>}, \dots
+	\item \texttt{<br />}
+	\end{itemize}
+\item Tag attributes describe each element:
+	\begin{itemize}
+	\item \texttt{id}: unique identifier for each element
+	\item \texttt{class}: grouping identifier for elements (useful for CSS)
+	\item \texttt{style}: in-line CSS styling
+	\end{itemize}
+\end{itemize}
+}
+
+
+
+
+
+\frame{
+\frametitle{Getting a grip on HTML}
+\begin{itemize}\itemsep1em
+\item Common form elements
+	\begin{itemize}
+	\item \texttt{<form></form>}
+	\item \texttt{<input />}
+	\item \texttt{<label></label>}
+	\item \texttt{<button />}
+	\end{itemize}
+\item<2-> Attributes specific to form elements
+	\begin{itemize}
+	\item \texttt{type}: the kind of input
+		\begin{itemize}
+		\item ``radio''
+		\item ``checkbox''
+		\item ``text''
+		\end{itemize}
+	\item \texttt{name}: the ``variable'' being recorded
+	\item \texttt{value}: the default variable value
+	\end{itemize}
+\end{itemize}
+}
+
+
+
+\bgroup
+\setbeamercolor{background canvas}{bg=blue!70!white}
+\setbeamertemplate{navigation symbols}{}
+\begin{frame}[plain]{}
+\begin{center}
+\textbf{{\Large Test Yourself!}}
+
+\vspace{2em}
+
+Make a simple HTML form that displays a question and a free response answer and passes the validator
+
+\vspace{2em}
+
+\url{https://validator.w3.org/nu/}
+\end{center}
+\end{frame}
+\egroup
+
+
+
+\bgroup
+\setbeamercolor{background canvas}{bg=blue!70!white}
+\setbeamertemplate{navigation symbols}{}
+\begin{frame}[plain]{}
+\begin{center}
+\textbf{{\Large Test Yourself!}}
+
+\vspace{2em}
+
+Make a simple HTML form that displays a question and a multiple choice answer and passes the validator
+
+\vspace{2em}
+
+\url{https://validator.w3.org/nu/}
+\end{center}
+\end{frame}
+\egroup
+
+
+
+\frame{
+
+Some other elements:
+
+\begin{itemize}
+\item Bullet list: \texttt{<ul></ul>}
+\item Enumerated list: \texttt{<ol></ol>}
+	\begin{itemize}
+	\item List element: \texttt{<li></li>}
+	\end{itemize}
+\item Tables:
+	\begin{itemize}
+	\item Table: \texttt{<table></table>}
+	\item Header: \texttt{<th></th>}
+	\item Row: \texttt{<tr></tr>}
+	\item Cell: \texttt{<td></td>}
+	\end{itemize}
+\end{itemize}
+
+}
+
+
+
+
 % css
+\frame{
+\frametitle{Getting a grip on HTML}
+
+HTML files can also contain other content
+
+\begin{itemize}\itemsep1em 
+\item Style sheets (CSS) in \texttt{<style></style>} elements in head
+\item Javascript in \texttt{<script></script>} elements in head and/or body
+\item Images (\texttt{<img src="url" />})
+\item HTML5 features (e.g., \texttt{<canvas>}, \texttt{<svg>})
+\end{itemize}
+}
+
+
+\frame<1>[label=css]{
+\frametitle{CSS is Elegant}
+
+\begin{itemize}\itemsep1em
+\item HTML originally (until 1996) had to be styled manually
+\item<2-> CSS allows you to style a document separately from its content
+	\begin{itemize}
+	\item Class- and element-specific styling
+	\item Change styling without changing the HTML
+	\end{itemize}
+\item<3-> Can be included inline, in \texttt{<head>}, or in separate document
+\end{itemize}
+
+}
+
+
+\frame{
+\begin{columns}
+\column{\dimexpr\paperwidth-15pt}
+\includegraphics[width=1.2\textwidth]{images/whitehouse}
+\end{columns}
+}
+
+\againframe{css}
+
+
+
+\bgroup
+\setbeamercolor{background canvas}{bg=blue!70!white}
+\setbeamertemplate{navigation symbols}{}
+\begin{frame}[plain]{}
+\begin{center}
+\textbf{{\Large Test Yourself!}}
+
+\vspace{2em}
+
+Make a simple HTML form uses CSS to style the answer options to your past survey and passes the validator
+
+\vspace{2em}
+
+\url{https://validator.w3.org/nu/}
+\end{center}
+\end{frame}
+\egroup
+
+
 
 % javascript for randomized redirect
 \begin{frame}[fragile]
@@ -495,6 +940,27 @@ A web page consists of four things:
 </html>
 \end{verbatim}
 \end{frame}
+
+
+
+\bgroup
+\setbeamercolor{background canvas}{bg=blue!70!white}
+\setbeamertemplate{navigation symbols}{}
+\begin{frame}[plain]{}
+\begin{center}
+\textbf{{\Large Test Yourself!}}
+
+\vspace{2em}
+
+Make a simple HTML form that displays a randomly selected piece of text and passes the validator
+
+\vspace{2em}
+
+\url{https://validator.w3.org/nu/}
+\end{center}
+\end{frame}
+\egroup
+
 
 
 % javascript for youtube video presentation
@@ -557,8 +1023,6 @@ If client-side is so cool\dots\\
 }
 
 \frame{
-
-
 \begin{columns}[t]
 \begin{column}{0.5\textwidth}
 	\begin{block}{Client-Side}
@@ -587,6 +1051,21 @@ If client-side is so cool\dots\\
 }
 
 
+% 
+
+\frame{
+\frametitle{Web Questionnaires}
+\begin{itemize}\itemsep1em
+\item Google Spreadsheet Forms:\\
+	\url{https://www.google.co.uk/forms/about/}
+\item Survey Monkey:\\ 
+	\url{https://www.surveymonkey.com/home/}
+\item Qualtrics:\\
+	\url{https://www.qualtrics.com/login/}
+\end{itemize}
+}
+
+
 
 
 % Google Spreadsheet forms
@@ -596,7 +1075,7 @@ If client-side is so cool\dots\\
 \begin{itemize}\itemsep1em
 \item Google Spreadsheet Forms:\\
 \url{https://www.google.co.uk/forms/about/}
-\item 
+%\item These are interesting because you can hack them
 \end{itemize}
 }
 
@@ -632,6 +1111,23 @@ If client-side is so cool\dots\\
 % show off collectors and panel management
 
 
+\bgroup
+\setbeamercolor{background canvas}{bg=blue!70!white}
+\setbeamertemplate{navigation symbols}{}
+\begin{frame}[plain]{}
+\begin{center}
+\textbf{{\Large Test Yourself!}}
+
+\vspace{2em}
+
+Create a simple survey and create a panel including yourself and maybe me (\href{mailto:thosjleeper@gmail.com}{thosjleeper@gmail.com}) as recipients. Try sending the survey.
+
+\end{center}
+\end{frame}
+\egroup
+
+
+
 \frame{
 \frametitle{Qualtrics}
 \begin{itemize}\itemsep1em
@@ -647,6 +1143,30 @@ If client-side is so cool\dots\\
 }
 % show off complex randomization and flow
 % show off panel variables
+% show off mobile preview
+
+\bgroup
+\setbeamercolor{background canvas}{bg=blue!70!white}
+\setbeamertemplate{navigation symbols}{}
+\begin{frame}[plain]{}
+\begin{center}
+\textbf{{\Large Test Yourself!}}
+
+\vspace{2em}
+
+Create two kinds of randomization: 
+
+\begin{enumerate}
+\item Using a random embedded data field
+\item Using block randomization
+\end{enumerate}
+
+Preview the survey to make sure it works.
+
+\end{center}
+\end{frame}
+\egroup
+
 
 
 
@@ -682,7 +1202,7 @@ If client-side is so cool\dots\\
   }
   </script>
   <form action="http://httpbin.org/post">
-    <p><label for="code">Code: <input type="text" name="code" /></label></p>
+    <p><label for="code">Code: <input type="text" id="code" name="code" /></label></p>
     <p><input type="submit"></p>
   </form>
 </body>
@@ -691,9 +1211,35 @@ If client-side is so cool\dots\\
 \end{frame}
 
 
+
+\bgroup
+\setbeamercolor{background canvas}{bg=blue!70!white}
+\setbeamertemplate{navigation symbols}{}
+\begin{frame}[plain]{}
+\begin{center}
+\textbf{{\Large Test Yourself!}}
+
+\vspace{2em}
+
+Setup an embedded data field in Qualtrics and then use a webform or simple hyperlink to redirect someone to your survey using that embedded data field.
+
+Try out the form (or link) and see how it is registered in your Qualtrics data.
+
+\end{center}
+\end{frame}
+\egroup
+
+
+
 % design considerations
 % loss of control (mobile platforms; text size; images; videos; different browsers)
 % know your sample
+
+
+
+% pretesting everything
+% tecnical pretesting (does it work?)
+% substantive pretesting (does it make sense?)
 
 
 
@@ -714,6 +1260,23 @@ If client-side is so cool\dots\\
 
 \section[Recruitment]{Recruitment in Practice}
 \frame{\tableofcontents[currentsection]}
+
+
+\frame{
+\frametitle{{\large For Multi-Person Games}}
+\begin{itemize}\itemsep1em
+\item Simultaneous participation can be challenging
+\item Best workflow is lab-like:
+	\begin{enumerate}
+	\item Recruit participants
+	\item Schedule them for time slots
+	\item Monitor to ensure participants show up
+	\item Pay a show-up fee
+	\end{enumerate}
+\item So, think of the following as relevant the first two steps in that process
+\item We'll talk more about running multi-person sessions later
+\end{itemize}
+}
 
 
 
@@ -752,6 +1315,7 @@ If client-side is so cool\dots\\
 
 
 
+
 \frame{
 \frametitle{Opt-in Crowdsourcing Sites}
 \begin{itemize}\itemsep1em
@@ -769,9 +1333,13 @@ If client-side is so cool\dots\\
 
 
 % Mturk
+%% http://www.turkprime.com/
 % Crowdflower
 % Microworkers
 % Prolific Academic
+% Others
+%% Click worker
+%%
 
 
 \frame{
@@ -785,7 +1353,25 @@ If client-side is so cool\dots\\
 
 % randomizing an email list
 
-
+\frame{
+\frametitle{Randomization}
+\begin{itemize}\itemsep1em
+\item Two flavors of randomness
+\item Pseudo-random
+	\begin{itemize}
+	\item Not actually random
+	\item Reproducible
+	\item Implemented everywhere
+	\item Excel: \texttt{=RANDBETWEEN(1,3)}
+	\item R: \texttt{sample(1:3, 100, TRUE)}
+	\end{itemize}
+\item Truly random
+	\begin{itemize}
+	\item Not reproducible
+	\item \url{http://www.random.org/}
+	\end{itemize}
+\end{itemize}
+}
 
 
 
@@ -905,7 +1491,7 @@ If client-side is so cool\dots\\
 
 \frame{
 	\frametitle{Overview of Stratification}
-	\begin{enumerate}\itemsep1em
+	\begin{enumerate}\itemsep0.5em
 		\item Define population
 		\item Construct a sampling frame
 		\item Identify variables we already know about units in the sampling frame
@@ -917,7 +1503,7 @@ If client-side is so cool\dots\\
 
 \frame{
 	\frametitle{Estimates from a stratified sample}
-	\begin{itemize}\itemsep1em
+	\begin{itemize}\itemsep0.5em
 		\item Within-strata estimates are calculated just like an SRS
 		\item Within-strata variances are calculated just like an SRS
 		\vspace{1em}
@@ -973,6 +1559,49 @@ If client-side is so cool\dots\\
 
 
 \frame{
+\frametitle{The Xbox Study}
+
+\begin{center}
+\includegraphics[width=\textwidth]{images/wangetal2}
+\end{center}
+
+{\footnotesize Wang et al. 2015. ``Forecasting elections with non-representative polls.'' \textit{International Journal of Forecasting}.\par}
+
+}
+
+
+\frame{
+\frametitle{The Xbox Study}
+
+\begin{center}
+\includegraphics[width=\textwidth]{images/wangetal1}
+\end{center}
+
+\vspace{1em}
+
+{\footnotesize Wang et al. 2015. ``Forecasting elections with non-representative polls.'' \textit{International Journal of Forecasting}.\par}
+
+}
+
+
+
+\frame{
+\begin{center}
+\includegraphics[width=.85\textwidth]{images/mullinix1}
+\end{center}
+\vspace{0.5em}
+{\footnotesize Mullinix et al. In press. ``The Generalizability of Survey Experiments.'' \textit{Journal of Experimental Political Science}.\par}
+}
+
+\frame{
+\begin{center}
+\includegraphics[width=.8\textheight]{images/mullinix2}
+\end{center}
+}
+
+
+
+\frame{
 \frametitle{Propensity Score Approach}
 \begin{enumerate}
 \item Define a target population to which sample inference is intended to generalize
@@ -1013,19 +1642,46 @@ where $V(v)$ is the variance of the estimated experimental sample effect for str
 }
 
 
-\frame{}
 
 \frame{
-\frametitle{Reweighting Challenges}
+\frametitle{Propensity Score Subclassification Estimator}
+\begin{columns}
+\column{\dimexpr\paperwidth-15pt}
+\scriptsize
+\begin{tabular}{rrrrrrrrr} \toprule
+& \multicolumn{2}{c}{Weights} & \multicolumn{6}{c}{Estimates}\\
+Stratum & Nat'l & Sample & Loan & DREAM (Pro) & DREAM (Con) & Rally (All) \\% & Rally (Distant) & Rally (Local) \\ 
+  \midrule
+  1 & 0.20 & 0.83 & 0.94 (0.08) & 0.06 (0.11) & -0.22 (0.12) & 0.74 (0.10) \\% & 0.77 (0.15) & 0.72 (0.15) \\ 
+  2 & 0.20 & 0.11 & 0.99 (0.26) & 0.22 (0.37) & -0.28 (0.36) & 0.77 (0.29) \\% & 0.85 (0.39) & 0.70 (0.42) \\ 
+  3 & 0.20 & 0.04 & 1.28 (0.43) & -0.61 (0.58) & -1.76 (0.54) & 1.00 (0.45) \\% & 0.75 (0.64) & 1.26 (0.64) \\ 
+  4 & 0.20 & 0.01 & 1.99 (0.73) & 0.29 (1.12) & 0.56 (0.89) & 1.44 (0.79) \\% & 3.13 (1.95) & 1.54 (0.63) \\ 
+  5 & 0.20 & 0.00 &  &  &  &  &  &  \\ \midrule
+  Sample & - & - & 1.04 (0.30) & -0.01 (0.44) & -0.34 (0.38) & 0.79 (0.33) \\% & 1.05 (0.60) & 0.86 (0.37) \\ 
+  Nat'l & - & - & 1.14 (0.18) & 0.02 (0.22) & -0.94 (0.23) & 0.94 (0.19) \\% & 1.01 (0.26) & 0.93 (0.27) \\ 
+   \bottomrule
+\end{tabular}
+\end{columns}
+}
+
+
+\frame{
+\textbf{So does reweighting solve everything forever?}
+
 \begin{itemize}\itemsep1em
-\item Strata must be large ($n>15$)
-\item Need accurate population-level stratum sizes
+\item<2-> Need well-defined target population
 	\begin{itemize}
-	\item Use raking if only marginals are available
+	\item and detailed covariate data
+	\item and large startum sizes
 	\end{itemize}
-\item Only useful if stratifying variables are related to key constructs of interest
-\item Can introduce further bias
+\item<3-> Purely model-based, so only as good as the model
+	\begin{itemize}
+	\item What unobservables might be hiding bias?
+	\item What reweighting might worse bias?
+	\end{itemize}
+\item<4-> Not well-tested on experimental data
 \end{itemize}
+
 }
 
 
@@ -1241,5 +1897,34 @@ Don't hesitate to be in touch:\\
 
 \appendix
 \frame{}
+
+\section{References}
+
+\frame{
+\frametitle{Experimental Methods}
+\begin{itemize}
+\item Druckman et al. 2011. \textit{Cambridge Handbook of Experimental Political Science}. Cambridge.
+\item Gerber and Green. 2011. \textit{Field Experiments}. W.W. Norton.
+\item Mutz. 2011. \textit{Population-Based Survey Experiments}. Princeton.
+\item Shadish et al. 2001. \textit{Experimental and Quasi-Experimental Designs for Generalized Causal Inference}. Houghton Mifflin.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Survey Methods}
+\begin{itemize}
+\item Groves et al. 2008. \textit{Survey Methodology}. 2nd Edition. Wiley.
+\item Lohr. 2010. \textit{Sampling: Design and Analysis}. 2nd Edition. Cengage.
+\end{itemize}
+}
+
+
+\frame{
+\frametitle{Online Surveys}
+\begin{itemize}
+\item Callegaro et al. 2015. \textit{Web Survey Methodology}. Sage.
+\item Callegaro et al. 2015. \textit{Online Panel Research: A Data Quality Perspective}. Wiley.
+\end{itemize}
+}
 
 \end{document}
