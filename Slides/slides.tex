@@ -261,28 +261,15 @@ a population-based experiment uses survey sampling methods to produce a collecti
 }
 
 
-
 \frame{
 
-Combining SRS and experimental design
-
-
-Says nothing about heterogeneity -> ATE is not necessarily an effect for any given unit in the population -> it is an average of individual-level effects
-
-Imagine two CATES (conditional average treatment effects)
-
-}
-
-
-
-
-
-\frame{
-
-\frametitle{Some considerations\dots}
+\frametitle{Sampling Considerations\dots}
 
 \begin{itemize}\itemsep0.5em
 \item<2-> More complex designs possible, all based on each unit having a \textit{known, non-zero} probability of being sampled
+	\begin{itemize}
+	\item Stratified sampling can produce lower variances
+	\end{itemize}
 \item<3-> Random sampling ensures that samples are, \textit{in expectation}, representative of the population \textit{in all respects}
 	\begin{itemize}
 	\item Demographics
@@ -296,6 +283,27 @@ Imagine two CATES (conditional average treatment effects)
 	\end{itemize}
 \end{itemize}
 
+}
+
+
+
+\frame{
+
+\frametitle{{\large Combining SRS and Experimental Design}}
+
+\begin{itemize}\itemsep1em
+\item Sample is representative of population in every respect (in expectation)
+\item Sample Average Treatment Effect (SATE) is the average of the sample's individual-level treatment effects
+	\begin{itemize}
+	\item Unbiased estimate of PATE
+	\item Not necessarily any unit's individual treatment effect
+	\item Blocking might reduce variance
+	\end{itemize}
+\item Says nothing about effect heterogeneity
+	\begin{itemize}
+	\item Design is optimized for estimating SATE
+	\end{itemize}
+\end{itemize}
 }
 
 
@@ -489,7 +497,15 @@ What does it mean for a sample to be representative?
 }
 
 
+\frame{
 
+\frametitle{Stratification/Blocking}
+
+As soon as we care about heterogeneous effects, it makes sense to stratify and block on factors that might moderate the treatment effect
+
+\onslide<2->{As soon as we identify all sources of heterogeneity, it doesn't matter what sample we use because effects are \textit{by definition} homogeneous within such strata.}
+
+}
 
 
 
@@ -1348,6 +1364,8 @@ Try out the form (or link) and see how it is registered in your Qualtrics data.
 \end{itemize}
 }
 
+
+% YouGov sample matching method
 
 
 
