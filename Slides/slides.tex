@@ -62,18 +62,20 @@ By the end of today you should be able to:
 \end{itemize}
 }
 
-
-\frame{
+\bgroup
+\setbeamercolor{background canvas}{bg=blue!70!white}
+\setbeamertemplate{navigation symbols}{}
+\begin{frame}[plain]{}
 \frametitle{How many of you have\dots}
 
 \begin{itemize}\itemsep1em
 \item<2-> taken a course on survey methods?
 \item<3-> taken a course on experimental design?
 \item<4-> written HTML markup before?
-\item<5-> run a study on MTurk or Crowdflower, with YouGov, or another online platform?
+\item<5-> run a study on MTurk or Crowdflower, with a vendor like YouGov, or another online platform?
 \end{itemize}
-}
-
+\end{frame}
+\egroup
 
 \section{``The Gold Standard''}
 \frame{\tableofcontents[currentsection]}
@@ -95,9 +97,9 @@ a population-based experiment uses survey sampling methods to produce a collecti
 	\frametitle{Causal Inference in Experiments I}
 	\begin{itemize}\itemsep0.5em
     	\item<1-> Causal inference is a comparison of two \textit{potential outcomes}
-    	\item<2-> A potential outcome is the value of the outcome (Y) for a given unit (i) after receiving a particular version/level/amount of the treatment (X)
+    	\item<2-> A potential outcome is the value of the outcome (Y) for a given unit (i) after receiving a particular version of the treatment (X)
     	\item<3-> Each unit has multiple \textit{potential} outcomes, but we only observe one of them
-    	\item<4-> A \textit{causal effect} is the difference between two potential outcomes (e.g., $Y_{X=1} - Y_{X=0}$), all else constant
+    	\item<4-> A \textit{causal effect} is the difference between these (e.g., $Y_{X=1} - Y_{X=0}$), all else constant
 	\end{itemize}
 }
 
@@ -168,7 +170,7 @@ a population-based experiment uses survey sampling methods to produce a collecti
         		\item Units differ only in what side of coin was up
         		\item Experiments randomly reveal potential outcomes
     		\end{itemize}
-    	\item<2-> Matching attempts to eliminate those confounds, such that:
+    	\item<2-> Matching/regression/etc. attempts to eliminate those confounds, such that:
     	\begin{align*}
     	E[Y_{1i} | Z] = E[Y_{1i} | X = 1, Z] = E[Y_{1i} | X = 0, Z]\\
     	E[Y_{0i} | Z] = E[Y_{0i} | X = 1, Z] = E[Y_{0i} | X = 0, Z]
@@ -182,8 +184,8 @@ a population-based experiment uses survey sampling methods to produce a collecti
 % design-based survey sampling
 
 \frame{
-	\frametitle{Inference Population}
-	\begin{itemize}\itemsep2em
+	\frametitle{Surveys Start with an Inference Population}
+	\begin{itemize}\itemsep1em
 		\item We want to speak to a population
 		\item But what population is it?
 			\begin{itemize}
@@ -191,12 +193,41 @@ a population-based experiment uses survey sampling methods to produce a collecti
 			\item<3-> Adults in Western, industrialized democracies?
 			\item<4-> All human beings?
 			\end{itemize}
+		\item<5-> This is rarely specified, but is important when we think about whether a sample is appropriate
 	\end{itemize}
 }
 
 
+\bgroup
+\setbeamercolor{background canvas}{bg=blue!70!white}
+\setbeamertemplate{navigation symbols}{}
+\begin{frame}[plain]{}
+\frametitle{Think about your own work}
+
+
+\vspace{1em}
+
+Consider the following: 
+
+\begin{enumerate}\itemsep1em
+\item What is your research about?
+\item What population do you intend to generalize to?
+\end{enumerate}
+
+\vspace{1em}
+
+Discuss with the person next to you.
+\end{frame}
+\egroup
+
+
+
+
+
+
 \frame{
 	\frametitle{A Hypothetical Census}
+
 	\begin{itemize}\itemsep2em
 		\item Advantages
 			\begin{itemize}
@@ -218,18 +249,15 @@ a population-based experiment uses survey sampling methods to produce a collecti
 
 \frame{
 	\frametitle{Sampling Frames}
-	\begin{itemize}\itemsep2em
+	\begin{itemize}\itemsep1em
 		\item Enumeration (listing) of all units eligible for sample selection
-		\item Two flavors:
+		\item Random sample from that list
+		\item<2-> Building a sampling frame
 			\begin{itemize}
-				\item Random sample from an ordered list
-				\item Systematic sampling from a randomized list
+			\item Combine existing lists
+			\item Canvass/enumerate from scratch
 			\end{itemize}
-		\item Building a sampling frame
-			\begin{itemize}
-				\item Combine existing lists
-				\item Canvass/enumerate from scratch
-			\end{itemize}
+		\item<3-> Concern about coverage: Does frame match population?
 	\end{itemize}
 }
 
@@ -260,6 +288,62 @@ a population-based experiment uses survey sampling methods to produce a collecti
 	$n = $ sample size
 }
 
+\frame{
+	\frametitle{Estimating sample size}
+
+\small
+
+	If all we cared about was a single proportion:
+
+	\begin{equation}
+		Var(p) = (1-f)\frac{p(1-p)}{n-1}
+	\end{equation}
+	
+	Given a large population:	
+	\begin{equation}
+		Var(p) = \frac{p(1-p)}{n-1}
+	\end{equation}
+	
+	Need to solve the above for $n$.
+	\begin{equation}
+	\only<2->{n = \frac{p(1-p)}{v(p)} = \frac{p(1-p)}{SE^2}}
+	\end{equation}
+}
+
+\frame{
+	\frametitle{Estimating sample size}
+    Determining sample size requires:
+    	\begin{itemize}
+    		\item A possible value of $p$
+    		\item A desired precision (standard error)
+    	\end{itemize}
+	\vspace{1em}
+	If support for each coalition is evenly matched ($p = 0.5$):
+	\begin{equation}
+	n = \frac{0.5(1-0.5)}{SE^2} = \frac{0.25}{SE^2}
+	\end{equation}
+}
+
+\frame{
+	\frametitle{Estimating sample size}
+	What precision (margin of error) do we want?
+	\begin{itemize}
+		\item +/- 2 percentage points: $SE = 0.01$
+			\begin{equation}
+			n = \frac{0.25}{0.01^2} = \frac{0.25}{0.0001} = 2500
+			\end{equation}
+		\item<2-> +/- 5 percentage points: $SE = 0.025$
+			\begin{equation}
+			n = \frac{0.25}{0.000625} = 400
+			\end{equation}
+		\item<3-> +/- 0.5 percentage points: $SE = 0.0025$
+			\begin{equation}
+			n = \frac{0.25}{0.00000625} = 40,000
+			\end{equation}
+	\end{itemize}
+}
+
+
 
 \frame{
 
@@ -289,7 +373,7 @@ a population-based experiment uses survey sampling methods to produce a collecti
 
 \frame{
 
-\frametitle{{\large Combining SRS and Experimental Design}}
+\frametitle{{\large Combining Probability Sampling and\\ Experimental Design}}
 
 \begin{itemize}\itemsep1em
 \item Sample is representative of population in every respect (in expectation)
@@ -309,7 +393,10 @@ a population-based experiment uses survey sampling methods to produce a collecti
 
 
 
-\frame{
+\bgroup
+\setbeamercolor{background canvas}{bg=blue!70!white}
+\setbeamertemplate{navigation symbols}{}
+\begin{frame}[plain]{}
 \frametitle{Representativeness}
 
 What does it mean for a sample to be representative?
@@ -325,9 +412,8 @@ What does it mean for a sample to be representative?
 \vspace{1em}
 
 \onslide<7->{Which of these matter? Discuss with the person next to you.}
-
-}
-
+\end{frame}
+\egroup
 
 % what kinds of representativeness do we care about?
 
@@ -501,9 +587,15 @@ What does it mean for a sample to be representative?
 
 \frametitle{Stratification/Blocking}
 
-As soon as we care about heterogeneous effects, it makes sense to stratify and block on factors that might moderate the treatment effect
+As soon as we care about heterogeneous effects, it makes sense to stratify and block on factors that might moderate the treatment effect.
+
+\vspace{1em}
 
 \onslide<2->{As soon as we identify all sources of heterogeneity, it doesn't matter what sample we use because effects are \textit{by definition} homogeneous within such strata.}
+
+\vspace{1em}
+
+\onslide<3->{But, we never know when we've reached that point!}
 
 }
 
@@ -525,37 +617,48 @@ As soon as we care about heterogeneous effects, it makes sense to stratify and b
 
 
 \frame{
-Does this mean all convenience samples are created equal?
+
+If we acknowledge and start thinking about effect heterogeneity, does this mean we can use any convenient group of participants as if they were probability samples?
 
 \vspace{1em}
 
-No.
+No. Of course not.
 }
 
 
 % defining your convenience sample
 \frame{
-	\frametitle{Convenience Samples}
+	\frametitle{Not All Convenience Samples Are Alike}
 	\begin{itemize}\itemsep1em
-		\item<1-> What is a convenience sample?
-		\item<2-> Different types:
+		\item<1-> Different types:
 			\begin{itemize}
-				\item<3-> Passive/opt-in/``river sampling''
-				\item<4-> Sample of convenience (not a sample per se)
+				\item<2-> Passive/opt-in/``river sampling''
+				\item<3-> Sample of convenience (not a sample per se)
 					\begin{itemize}
 					\item Email list
 					\item Snowball sample
 					\item Respondent-driven Sampling
+					\item Students
+					\item Crowdsourcing
 					\end{itemize}
-				\item<5-> Sample matching
-				\item<6-> Online panels
 			\end{itemize}
-		\item<7-> ``Purposive'' samples (common in qualitative studies)
+		\item<4-> Differ in numerous ways
+			\begin{itemize}
+			\item Cost
+			\item ``Experience''
+			\item Attentiveness
+			\item Demographics
+			\end{itemize}
 	\end{itemize}
 }
 
 \frame{
 \frametitle{Costs per participant}
+
+From one of my studies:\\
+
+\vspace{1em}
+
 \centering
 \begin{tabular}{l r r r}
 Sample	& Cost	& n	& Cost/participant\\ \midrule
@@ -568,6 +671,25 @@ Ads		& \$636	& 80		& \$7.95\\
 \bottomrule
 \end{tabular}
 }
+
+\frame{
+\frametitle{Participant Experience}
+
+\begin{itemize}\itemsep1em
+\item A lot of growing concern about experience
+\item Larger literature on ``panel conditioning''
+	\begin{itemize}
+	\item Inconclusive evidence
+	\end{itemize}
+\item<3-> Some numbers:
+	\begin{itemize}
+	\item<3-> MTurk workers are doing 100+ studies per month
+	\item<4-> Numbers are the same for YouGov panelists
+	\end{itemize}
+\end{itemize}
+
+}
+
 
 
 % eligibility; duplication; recontacts
@@ -602,6 +724,7 @@ Ads		& \$636	& 80		& \$7.95\\
 \end{center}
 }
 
+\frame{}
 
 
 
@@ -1069,7 +1192,10 @@ If client-side is so cool\dots\\
 
 % 
 
-\frame{
+\bgroup
+\setbeamercolor{background canvas}{bg=blue!70!white}
+\setbeamertemplate{navigation symbols}{}
+\begin{frame}[plain]{}
 \frametitle{Web Questionnaires}
 \begin{itemize}\itemsep1em
 \item Google Spreadsheet Forms:\\
@@ -1079,8 +1205,8 @@ If client-side is so cool\dots\\
 \item Qualtrics:\\
 	\url{https://www.qualtrics.com/login/}
 \end{itemize}
-}
-
+\end{frame}
+\egroup
 
 
 
@@ -1091,7 +1217,12 @@ If client-side is so cool\dots\\
 \begin{itemize}\itemsep1em
 \item Google Spreadsheet Forms:\\
 \url{https://www.google.co.uk/forms/about/}
-%\item These are interesting because you can hack them
+\item Features
+	\begin{itemize}
+	\item Free!
+	\item Somewhat complex branching
+	\item No randomization
+	\end{itemize}
 \end{itemize}
 }
 
@@ -1120,11 +1251,10 @@ If client-side is so cool\dots\\
 	\item Free account
 	\item Limited surveys and respondents
 	\item No randomization in free account
-	\item Nice respondent management tools
+	\item Nice respondent management tools (``collectors'')
 	\end{itemize}
 \end{itemize}
 }
-% show off collectors and panel management
 
 
 \bgroup
@@ -1150,16 +1280,14 @@ Create a simple survey and create a panel including yourself and maybe me (\href
 \item \url{https://www.qualtrics.com/login/}
 \item Features
 	\begin{itemize}
-	\item Free account
-	\item Limited surveys and respondents
+	\item Free account w/ limited surveys and respondents
 	\item Much more expensive than SurveyMonkey
-	\item Much more powerful survey design features
+	\item Powerful randomization functionality
+	\item Useful ``embedded data'' controls
+	\item Optimized for mobile
 	\end{itemize}
 \end{itemize}
 }
-% show off complex randomization and flow
-% show off panel variables
-% show off mobile preview
 
 \bgroup
 \setbeamercolor{background canvas}{bg=blue!70!white}
@@ -1167,6 +1295,7 @@ Create a simple survey and create a panel including yourself and maybe me (\href
 \begin{frame}[plain]{}
 \begin{center}
 \textbf{{\Large Test Yourself!}}
+\end{center}
 
 \vspace{2em}
 
@@ -1179,7 +1308,6 @@ Create two kinds of randomization:
 
 Preview the survey to make sure it works.
 
-\end{center}
 \end{frame}
 \egroup
 
@@ -1238,6 +1366,8 @@ Preview the survey to make sure it works.
 \vspace{2em}
 
 Setup an embedded data field in Qualtrics and then use a webform or simple hyperlink to redirect someone to your survey using that embedded data field.
+
+\vspace{1em}
 
 Try out the form (or link) and see how it is registered in your Qualtrics data.
 
@@ -1366,7 +1496,23 @@ Try out the form (or link) and see how it is registered in your Qualtrics data.
 
 
 % YouGov sample matching method
-
+\frame{
+\frametitle{{\large KnowledgeNetworks versus YouGov}}
+\begin{itemize}\itemsep1em
+\item Big debate in early 2000s about online panels
+	\begin{itemize}
+	\item KN used ABS to build a representative panel
+	\item YouGov created an opt-in panel; used ``sample matching''
+	\end{itemize}
+\item<2-> YouGov's process:
+	\begin{itemize}
+	\item Randomly sample from a list
+	\item Match each sampled individual to someone in their opt-in panel
+	\item Survey the matched individuals
+	\end{itemize}
+\item<3-> Evidence inconclusive but many think KN approach is better
+\end{itemize}
+}
 
 
 \frame{
@@ -1725,14 +1871,15 @@ Stratum & Nat'l & Sample & Loan & DREAM (Pro) & DREAM (Con) & Rally (All) \\% & 
 \item<2-> Need well-defined target population
 	\begin{itemize}
 	\item and detailed covariate data
-	\item and large startum sizes
+	\item and large stratum sizes
 	\end{itemize}
 \item<3-> Purely model-based, so only as good as the model
 	\begin{itemize}
 	\item What unobservables might be hiding bias?
 	\item What reweighting might worse bias?
 	\end{itemize}
-\item<4-> Not well-tested on experimental data
+\item<4-> Non-coverage is a potentially huge problem
+\item<5-> Not well-tested on experimental data
 \end{itemize}
 
 }
@@ -1839,7 +1986,7 @@ Stratum & Nat'l & Sample & Loan & DREAM (Pro) & DREAM (Con) & Rally (All) \\% & 
 }
 
 \frame{
-\frametitle{Metadata}
+\frametitle{Metadata/Paradata}
 \begin{itemize}\itemsep1em
 \item<1-> Timing
 	\begin{itemize}
@@ -1934,9 +2081,14 @@ In summary\dots
 
 \frametitle{Thanks!}
 
-Don't hesitate to be in touch:\\
+I will be around for questions.\\
 
-\begin{itemize}\itemsep1em
+\vspace{1em}
+
+But don't hesitate to be in touch later on:\\
+
+\begin{itemize}\itemsep0.5em
+\item Website: \url{http://www.thomasleeper.com}
 \item Email: \href{mailto:thosjleeper@gmail.com}{thosjleeper@gmail.com}
 \item Twitter: \href{https://twitter.com/thosjleeper}{@thosjleeper}
 \item GitHub: \href{https://github.com/leeper}{@leeper}
