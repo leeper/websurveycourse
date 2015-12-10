@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Survey</title>
+        <style>
+        .class1 {
+            font-weight: bold;
+            font-size:   2em;
+            color: blue;
+            font-family: arial,helvetica;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>This is a survey.</h1>
+        <h2>This is a subheader.</h2>
+        <p>This is a document.</p>
+        <form action="http://httpbin.org/post" method="POST">
+            <p class="class1">This is a form.</p>
+            <p>First name: 
+                <input type="text" name="firstname" />
+            </p>
+            <p>
+                Option 1: <input type="radio" name="radiobutton" value="1" />
+            </p>
+            <p>
+                Option 2: <input type="radio" name="radiobutton" value="2" />
+            </p>
+            <p>
+                <input type="checkbox" name="checkbox" value="1" />
+            </p>
+            <p>
+                <input type="checkbox" name="checkbox" value="2" />
+            </p>
+            <p>
+                <input type="checkbox" name="checkbox" value="3" />
+            </p>
+            
+            
+            <p><input type="submit" /></p>
+        </form>
+    </body>
+</html>
