@@ -28,8 +28,8 @@ By the end of today you should be able to:
 \begin{itemize}\itemsep1em
 \item Describe logic of design-based and model-based representativeness
 \item Evaluate the quality of a convenience sample
-\item Evaluate trade-offs between client-side and server-side technologies for behavioral research
 \item Design simple web forms using several tools
+\item Evaluate trade-offs between various technologies for behavioral research
 \item Apply all of this to your own research
 \end{itemize}
 }
@@ -211,7 +211,7 @@ Consider the following:
 
 \begin{enumerate}\itemsep1em
 \item What is your research about?
-\item What population do you intend to generalize to?
+\item What population do you aim to generalize to?
 \end{enumerate}
 
 \vspace{1em}
@@ -349,7 +349,7 @@ Discuss with the person next to you.
 
 \frametitle{Sampling Considerations\dots}
 
-\begin{itemize}\itemsep0.5em
+\begin{itemize}\itemsep1em
 \item<2-> More complex designs possible, all based on each unit having a \textit{known, non-zero} probability of being sampled
 	\begin{itemize}
 	\item Stratified sampling can produce lower variances
@@ -361,13 +361,35 @@ Discuss with the person next to you.
 	\item Covariances
 	\item Potential outcomes
 	\end{itemize}
-\item<4-> Only works in a world of perfect coverage and zero response bias
-	\begin{itemize}
-	\item Says nothing about response rate!
-	\end{itemize}
+\end{itemize}
+}
+
+
+\frame{}
+
+\bgroup
+\setbeamercolor{background canvas}{bg=blue!70!white}
+\setbeamertemplate{navigation symbols}{}
+\begin{frame}[plain]{}
+\frametitle{Representativeness}
+
+What does it mean for a sample to be representative?
+
+\begin{itemize}
+	\item<2-> Census
+	\item<3-> SRS (or more complex) design
+	\item<4-> Quota sampling (common prior to the 1940s)
+	\item<5-> Demographics match population
+	\item<6-> Others?
 \end{itemize}
 
-}
+\vspace{1em}
+
+\onslide<7->{Which of these matter?}
+\end{frame}
+\egroup
+
+% what kinds of representativeness do we care about?
 
 
 
@@ -392,41 +414,31 @@ Discuss with the person next to you.
 
 
 
+\frame{
 
-\bgroup
-\setbeamercolor{background canvas}{bg=blue!70!white}
-\setbeamertemplate{navigation symbols}{}
-\begin{frame}[plain]{}
-\frametitle{Representativeness}
-
-What does it mean for a sample to be representative?
-
-\begin{itemize}
-	\item<2-> Census
-	\item<3-> SRS (or more complex) design
-	\item<4-> Quota sampling (common prior to the 1940s)
-	\item<5-> Demographics match population
-	\item<6-> Others?
-\end{itemize}
+Credibility of all of this is based on \textit{design} only
 
 \vspace{1em}
 
-\onslide<7->{Which of these matter? Discuss with the person next to you.}
-\end{frame}
-\egroup
+\onslide<2->{Sampling aspect only works in a world of perfect coverage and no response bias}
 
-% what kinds of representativeness do we care about?
+}
 
-\frame{
+\frame<1-3>[label=myview]{
 \frametitle{My View}
 
 100\% design-based inference does not exist
 
 \vspace{1em}
 
-\begin{itemize}\itemsep1em
+\begin{itemize}\itemsep0.75em
 \item<2-> All survey designs involve reweighting adjustments
 \item<3-> Representativeness is a more complex issue than demographic comparisons
+\item<4-> Randomization gives us clear causal inference about a \textit{local} effect
+	\begin{itemize}
+	\item I would always sacrifice representativeness for clarity of causal inference
+	\item Focus on figuring out the nature of the \textit{localness}
+	\end{itemize}
 \end{itemize}
 }
 
@@ -463,11 +475,11 @@ What does it mean for a sample to be representative?
 
 \frame{
 \begin{center}
-\includegraphics[width=1.1\textheight]{images/mullinix1}
+\includegraphics[width=1.1\textheight, trim=0in 0in 0in 0.5in, clip]{images/mullinix1}
 \end{center}
 }
 
-
+\againframe<3-4>{myview}
 
 \frame{
 \frametitle{SUTO Framework}
@@ -547,7 +559,7 @@ What does it mean for a sample to be representative?
 	\item Focus on CATE instead
 	\item $E[Y_{1i} | X = 1, Z=z] - E[Y_{0i} | X = 0, Z=z]$
 	\end{itemize}
-\item<3-> Two basic analytic strategies
+\item<3-> Two formal analytic strategies
 	\begin{itemize}
 	\item Regression with large number of interactions
 	\item Bayesian Additive Regression Trees
@@ -715,6 +727,18 @@ Ads		& \$636	& 80		& \$7.95\\
 \end{itemize}
 }
 
+
+\frame{
+\frametitle{Measure, Measure, Measure}
+
+\vspace{1em}
+
+The only way to evaluate a sample is to know something about it.
+
+\vspace{1em}
+
+The best way to convince reviewers is to rule out irrelevancies.
+}
 
 
 \frame{
@@ -1454,11 +1478,13 @@ Try out the form (or link) and see how it is registered in your Qualtrics data.
 	\item Monitor to ensure participants show up
 	\item Pay a show-up fee
 	\end{enumerate}
-\item So, think of the following as relevant the first two steps in that process
-\item We'll talk more about running multi-person sessions later
+\item So, think of the following as relevant to the first two steps in that process
+%\item We'll talk more about running multi-person sessions later
 \end{itemize}
 }
 
+
+\frame{}
 
 
 \frame{
@@ -1479,7 +1505,7 @@ Try out the form (or link) and see how it is registered in your Qualtrics data.
 
 \frame{
 \frametitle{Considerations}
-\begin{itemize}\itemsep1em
+\begin{itemize}\itemsep0.75em
 \item Recruitment
 	\begin{itemize}
 	\item Sampling
@@ -1532,13 +1558,36 @@ Try out the form (or link) and see how it is registered in your Qualtrics data.
 
 
 % Mturk
-%% http://www.turkprime.com/
 % Crowdflower
 % Microworkers
 % Prolific Academic
 % Others
 %% Click worker
 %%
+
+
+\frame{}
+
+
+\bgroup
+\setbeamercolor{background canvas}{bg=blue!70!white}
+\setbeamertemplate{navigation symbols}{}
+\begin{frame}[plain]{}
+\begin{center}
+\textbf{{\Large Test Yourself!}}
+
+\vspace{2em}
+
+Use one of the sites we discussed to setup a basic study invitation.
+
+\vspace{1em}
+
+Probably best to try Crowdflower or Prolific Academic.
+
+\end{center}
+\end{frame}
+\egroup
+
 
 
 \frame{
@@ -2088,7 +2137,7 @@ I will be around for questions.\\
 But don't hesitate to be in touch later on:\\
 
 \begin{itemize}\itemsep0.5em
-\item Website: \url{http://www.thomasleeper.com}
+\item Slides: \url{http://www.thomasleeper.com/websurveycourse}
 \item Email: \href{mailto:thosjleeper@gmail.com}{thosjleeper@gmail.com}
 \item Twitter: \href{https://twitter.com/thosjleeper}{@thosjleeper}
 \item GitHub: \href{https://github.com/leeper}{@leeper}
