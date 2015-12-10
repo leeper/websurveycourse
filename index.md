@@ -11,6 +11,16 @@ The workshop will last approximately 5 hours and involve a mix of hands-on devel
 
 [Slides for the workshop are available here](Slides/slides.pdf).
 
+Some examples of html forms are here:
+
+ - [Activities/form_from_slide.html](Example from talk)
+ - [Activities/browserfeatures.html](Capturing browser features)
+ - [Activities/form.html](A simple form example)
+ - [Activities/mturk.html](An example of linking to MTurk)
+ - [Activities/randomization.html](An example of javascript randomization)
+ - [Activities/redirect.html](An example of a javascript redirect)
+ - [Activities/youtube.html](An example of a youtube video include)
+
 The course will use several online applications, all of which require registration. While participants do not need to register for all of these services, it may be helpful to register for at least some of them so that the hands-on activities are more engaging.
 
 ** Participant Recruitment Platforms **
