@@ -1,5 +1,5 @@
-pygments: true 
-markdown: rdiscount
+highlighter: rouge
+markdown: kramdown
 url: http://www.thomasleeper.com/websurveycourse
 author: Thomas J. Leeper
 name: Web Survey Course
