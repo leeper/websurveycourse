@@ -13,7 +13,7 @@ The workshop will last approximately 5 hours and involve a mix of hands-on devel
 
 Some examples of html forms are here:
 
- - [Example from talk](Activities/form_from_slide.html)]
+ - [Example from talk](Activities/form_from_slide.html)
  - [Capturing browser features](Activities/browserfeatures.html)
  - [A simple form example](Activities/form.html)
  - [An example of linking to MTurk](Activities/mturk.html)
@@ -23,20 +23,20 @@ Some examples of html forms are here:
 
 The course will use several online applications, all of which require registration. While participants do not need to register for all of these services, it may be helpful to register for at least some of them so that the hands-on activities are more engaging.
 
-** Participant Recruitment Platforms **
+#### Participant Recruitment Platforms ####
 
  - [Google Consumer Surveys](http://www.google.com/insights/consumersurveys/home)
  - [Amazon Mechanical Turk](https://requester.mturk.com/)
  - [Crowdflower](http://www.crowdflower.com/)
  - [Prolific Academic](https://www.prolific.ac/)
 
-** Survey Tools **
+#### Survey Tools ####
  
  - [Google Drive](https://drive.google.com) (free account; unlimited surveys and respondents; no randomization)
  - [SurveyMonkey](https://www.surveymonkey.com/) (free account; limited surveys and respondents; no randomization in free account)
  - [Qualtrics](http://www.qualtrics.com/free-account/) (free account; limited surveys and respondents)
  
-** Server-side technologies **
+#### Server-side technologies ####
 
  - [Otree](www.otree.org) (free download)
    - [Download and installation instructions](http://otree.readthedocs.org/en/latest/setup.html#prerequisite-python-2-7-not-3-x)
