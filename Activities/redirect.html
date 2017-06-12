@@ -6,14 +6,14 @@
 <body>
   <script>
   var u = new Array ();
-  u[0] = "http://www.google.com";
+  u[0] = "https://www.surveymonkey.com/r/S3M56B3";
   u[1] = "http://www.bing.com";
   u[2] = "http://www.yahoo.com";
   var i = Math.floor(u.length*Math.random());
-  document.write("Redirecting to " + u[i]);
-  window.location.replace(u[i]);
-  //document.write("Redirecting you in 2 seconds to <a href='" + u[i] + "'>" + u[i] + "</a>");
-  //t=setTimeout("window.location.replace(u[i]);",2000)
+  //document.write("Redirecting to " + u[i]);
+  //window.location.replace(u[i]);
+  document.write("Redirecting you in 2 seconds to <a href='" + u[i] + "'>" + u[i] + "</a>");
+  t=setTimeout("window.location.replace(u[i]);",2000)
   </script>
 </body>
 </html>
